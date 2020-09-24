@@ -1,0 +1,5 @@
+서버에 요청을 하는 방법
+
+1. 웹 브라이저 주소줄에 주소입력 +ENTER - GET
+2. 버튼 :  form - get / form - post
+3. link - GET
