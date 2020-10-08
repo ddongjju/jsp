@@ -8,7 +8,7 @@ public class CookieSplitTest {
 
 	
 	@Test
-	public void getCookieValueTest() {
+	public void getCookieValueSuccessTest() {
 		/***Given***/
 		CookieSplit cookie = new CookieSplit();
 
@@ -16,6 +16,17 @@ public class CookieSplitTest {
 		String name = cookie.getCookieValue("USERNM");
 		/***Then***/
 		assertEquals(name, "brown");
+	}
+	
+	@Test
+	public void getCookieValueFailTest() {
+		/***Given***/
+		CookieSplit cookie = new CookieSplit();
+		
+		/***When***/
+		String name = cookie.getCookieValue("PASSWORD");
+		/***Then***/
+		assertEquals(name, "");
 	}
 
 }
