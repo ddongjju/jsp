@@ -26,11 +26,23 @@
   	<servlet-class>kr.or.ddit.basic.TimesTablesServlet</servlet-class>
   </servlet>
   
-  <!-- /basicServlet으로 요청이 올경우 basicServlet이라는 이름의 서블릿을 실행 -->
   <servlet-mapping>
   	<servlet-name>timesTablesServlet</servlet-name>
   	<url-pattern>/TimesTablesServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>dbConnectionPool</servlet-name>
+  	<servlet-class>kr.or.ddit.db.ConnectionPoolServlet</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>dbConnectionPool</servlet-name>
+  	<url-pattern>/dbConnectionPool</url-pattern>
+  </servlet-mapping>
+  
+  
   
   <context-param>
   	<param-name>dbUserId</param-name>
@@ -57,6 +69,13 @@
   	<error-code>500</error-code>
   	<location>/error/500/500.html</location>
   </error-page>
+  
+  <resource-ref>
+	<description>DB Connection</description>
+	<res-ref-name>jdbc/oracleDB</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+  </resource-ref>
   
 
 </web-app>
