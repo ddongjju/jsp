@@ -8,15 +8,19 @@ import kr.or.ddit.member.model.MemberVo;
 
 public class MemberService implements MemberServiceI {
 
+	private static MemberDaoI memberDao;
+	
+	public MemberService() {
+		memberDao = new MemberDao();
+	}
+	
 	@Override
 	public MemberVo getMember(String userId) {
-		MemberDaoI memberDao = new MemberDao();
 		return memberDao.getMember(userId);
 	}
 
 	@Override
 	public List<MemberVo> selectAllmember() {
-		MemberDaoI memberDao = new MemberDao();
 		return memberDao.selectAllMember();
 	}
 	

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.db.MybatisUtil;
 import kr.or.ddit.member.model.MemberVo;
+import oracle.jdbc.internal.OracleStatement.SqlKind;
 
 public class MemberDao implements MemberDaoI{
 
@@ -26,6 +27,7 @@ public class MemberDao implements MemberDaoI{
 		// 여러 건 : selectList
 		
 		MemberVo memberVo = sqlSession.selectOne("member.getMember",userId);
+		sqlSession.close();
 		
 		return memberVo;
 		
@@ -35,6 +37,8 @@ public class MemberDao implements MemberDaoI{
 		SqlSession sqlSession = MybatisUtil.getSqlSession();
 		
 		List<MemberVo> memberList = sqlSession.selectList("member.selectAllMember");
+		
+		sqlSession.close();
 		
 		return memberList;
 	}

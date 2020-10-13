@@ -12,7 +12,11 @@ public class JobsDao implements JobsDaoI {
 	@Override
 	public List<JobsVo> getAllJobs() {
 		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		
 		List<JobsVo> jobsList = sqlSession.selectList("jobs.getAllJobs");
+		
+		sqlSession.close();
+		
 		return jobsList;
 	}
 
