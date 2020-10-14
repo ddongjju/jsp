@@ -46,7 +46,7 @@
 	<%--action : 요청을 보낼 경로
 		method : 요청 방식(form에서는 GET, POST 두가지만 가능하면 DEFAULT는 GET)
 	 --%>
-	<form id="form1" action="<%=request.getContextPath() %>/request/requestResponse.jsp" method="get">
+	<form id="form1" action="${pageContext.request.contextPath }/request/requestResponse.jsp" method="get">
 		<label>user id : </label>
 		<input type="text" name="userId" value="브라운"><br>
 		
