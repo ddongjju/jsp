@@ -41,7 +41,7 @@
 									<th>사용자 별명</th>
 									<th>등록일시</th>
 								</tr>
-								<c:forEach items="${MemberVo}" var="member">
+								<c:forEach items="${memberList}" var="member">
 									<tr>
 										<td>${member.userid }</td>
 										<td>${member.usernm}</td>
@@ -54,14 +54,18 @@
 						</div>
 
 						<a class="btn btn-default pull-right">사용자 등록</a>
-
 						<div class="text-center">
 							<ul class="pagination">
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
+								<c:forEach var="i" begin="1" end="${pages }">
+									<c:choose>
+										<c:when test="${i == page}">
+											<li class="active"><span>${i}</span></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${pageContext.request.contextPath }/memberList?page=${i}">${i}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>

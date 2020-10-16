@@ -3,9 +3,11 @@ package kr.or.ddit.member.service;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
+import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.member.model.MemberVo;
 
 public class MemberServiceTest {
@@ -24,10 +26,10 @@ public class MemberServiceTest {
 		MemberVo memberVo = memberService.getMember(userId);
 
 		/*** Then ***/
-//			assertEquals("brown", memberVo.getUserId());
-//			assertEquals("passBrown", memberVo.getPassword());
+		assertEquals("brown", memberVo.getUserid());
+		assertEquals("brownPass", memberVo.getPass());
 
-		assertEquals(answerMemberVo, memberVo);
+//		assertEquals(answerMemberVo, memberVo);
 	}
 	
 	@Test
@@ -40,6 +42,23 @@ public class MemberServiceTest {
 		
 		/*** Then ***/
 		assertNotNull(memberList);
+	}
+	
+	@Test
+	public void selectPagemember() {
+		/*** Given ***/
+		MemberServiceI memberService = new MemberService();
+		PageVo pageVo = new PageVo(1,5); 
+		/*** When ***/
+		//memberList 확인
+		Map<String, Object> map = memberService.selectPagemember(pageVo);
+		List<MemberVo> memberList = (List<MemberVo>) map.get("memberList");
+		
+		//생성해야할 page수
+//		int pages = (Integer)map.get("pages");
+		/*** Then ***/
+		assertEquals(5, memberList.size());
+//		assertEquals(3, pages);
 	}
 
 }
