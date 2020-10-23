@@ -16,5 +16,15 @@ public class FileUploadUtil {
 		}
 		return files2;
 	}
+	
+	//filename : sally.png ==> png
+	public static String getExtension(String filename) {
+//		String[] file = filename.split("[.]");
+//		return file[1];
+		if(filename == null || filename.indexOf(".") == -1)
+			return "";
+		else
+			return filename.split("\\.")[1];
+	}
 
 }

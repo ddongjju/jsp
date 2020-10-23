@@ -3,12 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
+  
   <select id="getMember" parameterType="String" resultType="MemberVo">
-	SELECT *
-	FROM USERS
-	WHERE userid = #{userId}
-	
+  	select * from users where userid=#{userid}
   </select>
+  
   <select id = "selectAllMember" resultType="MemberVo">
   	SELECT *
   	FROM USERS
@@ -28,6 +27,31 @@
   <select id="selectMemberTotalCnt" resultType="int">
   	SELECT COUNT(*) FROM users
   </select>
+  
+  <insert id="insertMember" parameterType="MemberVo">
+  	insert into users values( #{userid}, #{usernm}, #{pass}, sysdate, #{alias}, #{addr1}, #{addr2}, #{zipcode}, #{filename}, #{realFilename})
+  
+  </insert>
+  
+  <delete id="deleteMember" parameterType="String">
+  	delete from users where userid = #{userid}
+  
+  </delete>
+  
+  <update id="updateMember" parameterType="MemberVo">
+  	update users 
+		set usernm = #{usernm} 
+			,pass = #{pass} 
+            ,REG_DT = sysdate
+			,alias = #{alias} 
+            ,addr1= #{addr1} 
+            ,addr2= #{addr2} 
+            ,zipcode= #{zipcode} 
+            ,filename= #{filename} 
+            ,realFilename=#{realFilename} 
+		where userid = #{userid}
+  </update>
+  
   
   
   

@@ -70,7 +70,7 @@ $(document).ready(function(){
 							</table>
 						</div>
 
-						<a class="btn btn-default pull-right">사용자 등록</a>
+						<a class="btn btn-default pull-right" href="${cp}/memberRegist">사용자 등록</a>
 						<div class="text-center">
 							<ul class="pagination">
 								<c:forEach var="i" begin="1" end="${pages }">

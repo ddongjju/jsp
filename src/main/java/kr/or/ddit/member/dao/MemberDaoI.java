@@ -16,4 +16,10 @@ public interface MemberDaoI {
 	List<MemberVo> selectPagemember(SqlSession sqlSession, PageVo pageVo);
 	
 	int selectMemberTotalCnt(SqlSession sqlSession);
+	
+	int insertMember(MemberVo memberVo);
+	
+	int deleteMember(String userId);
+	
+	int updateMember(MemberVo memberVo);
 }

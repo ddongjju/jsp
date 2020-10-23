@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 
 	// login 화면에서 사용자가 보낸 아이디, 비밀번호를 사용하여 로그인 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId");
+		String userId = request.getParameter("userid");
 		String password = request.getParameter("password");
 		
 		logger.debug("userId : {}, password : {}",userId, password);

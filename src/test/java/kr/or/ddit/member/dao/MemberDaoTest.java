@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.junit.Before;
 import org.junit.Test;
 
 import kr.or.ddit.common.model.PageVo;
@@ -16,10 +17,29 @@ import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceI;
 
 public class MemberDaoTest {
+	
+	/*
+	 	테스트 메소드 실행 사이클:
+	 	@BeforeClass(static)
+	 		@Before => @Test => @After(테스트 메소드마다 이 순서로 실행)
+	 	@AfterClass(static)
+	 */
+	MemberDao memberDao;
+	
+	@Before
+	public void deleteMemberTest() {
+		memberDao = new MemberDao();
+		
+		String userid = "ldj";
+		
+		memberDao.deleteMember(userid);
+	}
+	
+	
 	@Test
 	public void getMemberTest() {
 		/***Given***/
-		MemberDao memberDao = new MemberDao();
+		memberDao = new MemberDao();
 		String userId = "brown";
 		
 		MemberVo answerMemberVo = new MemberVo();
@@ -39,7 +59,7 @@ public class MemberDaoTest {
 	@Test
 	public void selectAllMemberTest() {
 		/***Given***/
-		MemberDao memberDao = new MemberDao();
+		memberDao = new MemberDao();
 		
 		/***When***/
 		List<MemberVo> memberList = memberDao.selectAllMember();
@@ -53,7 +73,7 @@ public class MemberDaoTest {
 	@Test
 	public void selectPagemember() {
 		/*** Given ***/
-		MemberDao memberDao = new MemberDao();
+		memberDao = new MemberDao();
 		PageVo pageVo = new PageVo(1,5); 
 		SqlSession sqlSession = MybatisUtil.getSqlSession();
 		/*** When ***/
@@ -67,7 +87,7 @@ public class MemberDaoTest {
 	@Test
 	public void selectMemberTotalCnt() {
 		/*** Given ***/
-		MemberDao memberDao = new MemberDao();
+		memberDao = new MemberDao();
 		SqlSession sqlSession = MybatisUtil.getSqlSession();
 		/*** When ***/
 		int totalCnt = memberDao.selectMemberTotalCnt(sqlSession);
@@ -75,7 +95,17 @@ public class MemberDaoTest {
 		/*** Then ***/
 		assertEquals(15, totalCnt);
 	}
-	  
+	 
+	@Test
+	public void insertMemberTest() {
+		/***Given***/
+		memberDao = new MemberDao();
+		MemberVo memberVo = new MemberVo("ldj", "123", "이동주", "dong", "주소", "상세주소", "12345", "d:\\profile\\sally.png", "sally.png");
+		/***When***/
+		int insertCnt = memberDao.insertMember(memberVo);
+		/***Then***/
+		assertEquals(1, insertCnt);
+	}
 	
 
 	

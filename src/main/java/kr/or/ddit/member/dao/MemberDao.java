@@ -53,4 +53,54 @@ public class MemberDao implements MemberDaoI{
 		return sqlSession.selectOne("member.selectMemberTotalCnt");
 	}
 
+	@Override
+	public int insertMember(MemberVo memberVo) {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		int insertCnt = 0;
+		try {
+			insertCnt = sqlSession.insert("member.insertMember", memberVo);
+		}catch (Exception e) {
+			
+		}
+		
+		if(insertCnt == 1) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		
+		return insertCnt;
+	}
+
+	@Override
+	public int deleteMember(String userId) {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		int deleteCnt = sqlSession.insert("member.deleteMember", userId);
+		
+		if(deleteCnt == 1) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		
+		return deleteCnt;
+	}
+
+	@Override
+	public int updateMember(MemberVo memberVo) {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		int updateCnt = sqlSession.insert("member.updateMember", memberVo);
+		
+		if(updateCnt == 1) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		
+		return updateCnt;
+	}
+
 }

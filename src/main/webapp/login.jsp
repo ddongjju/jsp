@@ -77,7 +77,7 @@
       <form class="form-signin" action="${pageContext.request.contextPath }/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email"  name="userId" id="inputEmail" class="form-control" placeholder="Email address" required autofocus value="brown">
+        <input type="email"  name="userid" id="inputEmail" class="form-control" placeholder="Email address" required autofocus value="brown">
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required value="brownPass">
         <div class="checkbox">
