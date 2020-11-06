@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,6 +77,7 @@ function initData(){
                   <label for="userid" class="col-sm-2 control-label">사용자 아이디</label>
                   <div class="col-sm-10">
                      <input type="text" class="form-control" id="userid" name="userid" placeholder="사용자 아이디" value="${param.userid}">
+                     
                  
                   </div>
                </div>
@@ -84,6 +86,7 @@ function initData(){
                   <label for="usernm" class="col-sm-2 control-label">사용자 이름</label>
                   <div class="col-sm-10">
                      <input type="text" class="form-control" id="usernm" name="usernm" placeholder="사용자 이름" value="${param.usernm}">
+                    	<span style="color: red;"><form:errors path="memberVo.usernm"></form:errors></span> 
                   </div>
                </div>
                

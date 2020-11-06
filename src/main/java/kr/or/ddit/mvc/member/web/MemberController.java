@@ -6,11 +6,13 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.common.model.PageVo;
+import kr.or.ddit.member.model.JSRMemberVo;
 import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.member.model.MemberVoValidator;
 import kr.or.ddit.member.service.MemberServiceI;
 
 @RequestMapping("/member")
@@ -64,7 +68,15 @@ public class MemberController {
 
 	
 	@RequestMapping(path = "/regist", method = RequestMethod.POST)
-	public String memberRegist(MemberVo memberVo, @RequestPart("realFilename2") MultipartFile profile) {
+	public String memberRegist(@Valid MemberVo memberVo, BindingResult br,
+			@RequestPart("realFilename2") MultipartFile profile) {
+		
+		//new MemberVoValidator().validate(memberVo, br);
+		
+		//검증을 통과하지 못했으므로 사용자 등록화면으로 이동
+		if(br.hasErrors()) {
+			return "member/memberRegist";
+		}
 
 		String realFileName = profile.getOriginalFilename();
 		String ext = FileUploadUtil.getExtension(realFileName);
