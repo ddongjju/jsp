@@ -17,8 +17,8 @@
 <%@ include file="/WEB-INF/views/layout/commonLib.jsp"%>
 <script type="text/javascript">
 $(document).ready(function(){
-	$('#profileDownBtn').on('click',function(){
-		document.location="/profileDownload?userid=${memberVo.userid}";
+	$('#profileDownload').on('click',function(){
+		document.location="/profileDownloadView?userid=${memberVo.userid}";
 	});
 });
 
@@ -41,8 +41,8 @@ $(document).ready(function(){
 					<div class="form-group">
 						<label for="profile" class="col-sm-2 control-label">사용자 프로필</label>
 						<div class="col-sm-10">
-							<img src="${cp}/member/profileImg?userid=${memberVo.userid}"><br>
-							<button id="profileDownBtn" type="button" class="btn btn-default" >다운로드 : ${memberVo.realFilename }</button>
+							<img src="${cp}/profileImg?userid=${memberVo.userid}"><br>
+							<button id="profileDownload" type="button" class="btn btn-default" >다운로드 : ${memberVo.realFilename }</button>
 						</div>
 					</div>
 
