@@ -4,4 +4,4 @@
 <script src="${cp}/js/bootstrap.js"></script><!-- Custom styles for this template -->
 <link href="${cp}/css/bootstrap.css" rel="stylesheet">
 <link href="${cp}/css/dashboard.css" rel="stylesheet">
-<link href="${cp}/blog.css" rel="stylesheet"> 
+<link href="${cp}/css/blog.css" rel="stylesheet"> 
