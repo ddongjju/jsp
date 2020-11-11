@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.common.model.PageVo;
@@ -16,6 +17,7 @@ import kr.or.ddit.member.model.MemberVo;
 
 @Service("memberService")
 public class MemberService implements MemberServiceI {
+	
 
 	@Resource(name="memberDao")
 //	@Autowired
@@ -33,11 +35,10 @@ public class MemberService implements MemberServiceI {
 
 	@Override
 	public Map<String, Object> selectPagemember(PageVo pageVo) {
-		SqlSession sqlSession = MybatisUtil.getSqlSession();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("memberList", memberDao.selectPagemember(sqlSession, pageVo));
+		map.put("memberList", memberDao.selectPagemember(pageVo));
 
-		int totalCnt = memberDao.selectMemberTotalCnt(sqlSession);
+		int totalCnt = memberDao.selectMemberTotalCnt();
 		int pages = (int) Math.ceil((double) totalCnt / pageVo.getPageSize());
 		map.put("pages", pages);
 		map.put("pageSize", pageVo.getPageSize());

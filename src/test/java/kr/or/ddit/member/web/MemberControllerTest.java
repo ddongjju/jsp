@@ -32,25 +32,25 @@ public class MemberControllerTest extends WebTestConfig{
 	
 	@Test
 	public void listTest() throws Exception {
-		mockMvc.perform(get("/member/list")).andExpect(status().isOk()).andExpect(view().name("member/memberList"));
+		mockMvc.perform(get("/member/list")).andExpect(status().isOk()).andExpect(view().name("tiles/member/memberListContent"));
 	}
 	
 	@Test
 	public void getmemberTest() throws Exception{
 		mockMvc.perform(get("/member/member").param("userid", "brown")).andExpect(status().isOk())
-				.andExpect(view().name("member/member"));
+				.andExpect(view().name("tiles/member/memberContent"));
 		
 	}
 
 	@Test
 	public void registViewTest() throws Exception {
-		mockMvc.perform(get("/member/regist")).andExpect(status().isOk()).andExpect(view().name("member/memberRegist"));
+		mockMvc.perform(get("/member/regist")).andExpect(status().isOk()).andExpect(view().name("tiles/member/memberRegistContent"));
 	}
 	
 	@Test
 	public void memberUpdateViewTest() throws Exception {
 		mockMvc.perform(get("/member/update").param("userid", "brown")).andExpect(status().isOk())
-		.andExpect(view().name("member/memberUpdate"));
+		.andExpect(view().name("tiles/member/memberUpdateContent"));
 
 	}
 	

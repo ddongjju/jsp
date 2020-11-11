@@ -28,7 +28,7 @@ public class MultiParamControllerTest extends WebTestConfig{
 		MvcResult result = mockMvc.perform(get("/multi/submit").param("userid", "brown","sally","cony")).andDo(print()).andReturn();
 		
 		ModelAndView mav = result.getModelAndView();
-		assertEquals("multi/submit", mav.getViewName());
+		assertEquals("multi/view", mav.getViewName());
 		
 	}
 
