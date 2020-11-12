@@ -18,9 +18,6 @@
   				kr.or.ddit.config.spring.AopContext
   				kr.or.ddit.config.spring.DataSourceContext
   				kr.or.ddit.config.spring.TransactionContext
-<!--   	classpath:kr/or/ddit/config/spring/root-context.xml -->
-<!--   					classpath:kr/or/ddit/config/spring/aop-context.xml -->
-<!--   					classpath:kr/or/ddit/config/spring/datasource-context.xml -->
   	</param-value>
   </context-param>
   

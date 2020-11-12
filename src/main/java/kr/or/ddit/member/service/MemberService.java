@@ -9,12 +9,14 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.db.MybatisUtil;
 import kr.or.ddit.member.dao.MemberDaoI;
 import kr.or.ddit.member.model.MemberVo;
 
+@Transactional
 @Service("memberService")
 public class MemberService implements MemberServiceI {
 	
