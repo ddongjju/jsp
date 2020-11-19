@@ -22,7 +22,6 @@ public class MemberService implements MemberServiceI {
 	
 
 	@Resource(name="memberDao")
-//	@Autowired
 	private MemberDaoI memberDao;
 	
 	@Override
